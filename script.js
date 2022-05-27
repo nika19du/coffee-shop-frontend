@@ -27,20 +27,10 @@ navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
 }, 
-}); 
-// to do:fix error in console
-$(document).ready(function(){
-    $(".counterup").counterUp({
-        delay:10,
-        time:1200
-    });
-});
-
+});  
 document.querySelector('#contact-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    e.target.elements.name.value = '';
-    e.target.elements.email.value = '';
-    e.target.elements.message.value = '';
+    e.preventDefault(); 
+    e.target.elements.email.value = ''; 
   });
 
 gsap.registerPlugin(ScrollTrigger);
