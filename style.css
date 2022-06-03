@@ -66,6 +66,7 @@ body {
   transition: all 0.3s ease-in-out;
   background: #fff;
 }
+
 /* DO med q for navbar */
 @media screen and (max-width: 940px) {
   .menu {
@@ -140,6 +141,60 @@ body {
   #mobile-menu.is-active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
   }
+ 
+}
+table tbody tr th{
+  color:black;
+  padding: 0.4rem;
+}
+th a{
+  color:#f00;
+  cursor:pointer;
+}
+.cartBox{
+  position:fixed;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  background: rgb(0,0,0,0.8);
+  z-index:99999;
+  transition:0.3s linear;
+  transform:scale(0);
+}
+.cartBox.active{
+  transform:scale(1);
+}
+.cartBox .cart{
+  position: relative;
+  height:70%;
+  width:80%;
+  background:#fff;
+  display:flex;
+  flex-direction: column;
+  align-items:center; 
+  
+}
+.cartBox .cart i{
+  position:absolute;
+  right:0;
+  top:0;
+  background: #f00;
+  padding:10px 15px;
+  color:#fff;
+  cursor: pointer;
+}
+.cartBox .cart i:hover{
+  background:#ff0000a5;
+}
+.cartBox .cart h2{
+  position:relative;
+  margin-top:2%;
+  font-size:2.8rem;
+  color:#ffd754;
 }
 .home {
   background: url(images/home-img.jpeg) center center/cover no-repeat scroll;
@@ -207,8 +262,23 @@ body {
   /* border-radius: 12px; */
   border: 1px solid #d3ad7f;
   padding: 6px;
+  background: transparent;
 }
-
+.iconShopping{
+  position:relative;
+  cursor: pointer;
+  z-index:1;
+  font-size:1.8rem;
+}
+ .iconShopping p{
+  position: absolute;
+  top:-5px;
+  right:-12px;
+  font-size: 0.69rem;
+  background-color: #d3ad7f;
+  padding:5px 5px;
+  border-radius: 50%;
+}
 /* .mini-box-title { 
     font-size: 24px;
     line-height: 26px;
@@ -231,20 +301,27 @@ body {
   font-size: 2.5rem;
   padding: 10px 0;
   margin-bottom: 20px;
+  cursor:pointer;
 }
-.mini-box .price span {
+.mini-box:hover{
+  background: #13131a;
+  border-radius: 12px; 
+  cursor:pointer;
+}  
+ .our .price {
+  color: #fff;
+  font-size: 2.5rem;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+ .our .price span {
   font-size: 16px;
   font-weight: lighter;
   text-decoration: line-through;
 }
-.mini-box:hover {
-  background: #fff;
-  border-radius: 12px;
+/* .mini-box:hover, .mini-box .price:hover > * { 
   color: #000000;
-}
-.mini-box:hover > * {
-  color: #000000;
-}
+} */
 .mini-box .stars i {
   font-size: 1.5rem;
   color: #d3ad7f;
@@ -325,8 +402,10 @@ body {
   text-align: center;
   font-size: 3rem;
   margin: 0 auto;
-  top: 45%;
+  display: flex;
+  justify-content: center;
   color: white;
+  top: 49%;
 }
 .swiper-slide .event-space {
   background: #000000;
@@ -463,7 +542,8 @@ body {
   background: #d3ad7f;
   color: #fff;
 }
-
+ 
+/* review style */
 .team {
   margin: 45px;
 }
@@ -659,7 +739,7 @@ body {
     margin: 0 auto;
   }
   .blog-cta .btn {
-    padding: 0.9rem;
+    padding: 0.5rem;
   }
 }
 .video-wrapper {
@@ -896,4 +976,35 @@ footer.site-footer {
     height: auto;
     margin-left: 1rem;
   }
+}
+/* ORDER Page Style */
+.orderInfo{ 
+  margin:20px; 
+}
+.orderInfo p{
+  padding:1rem;
+  font-size: 21px; 
+  text-align: center;
+}
+.orderForm{
+  display:flex;
+  flex-direction: column;
+  width:60%;
+  margin:0 auto;
+}
+.orderForm input,.orderForm select, .orderForm textarea,.orderForm button{
+  padding:20px;
+  margin-bottom:20px;
+  outline:none;
+  border:none;
+  background-color: #ddd;
+  font-weight: bold; 
+}
+.orderForm button{
+  background-color:#333;
+  cursor:pointer;
+  color:#fff;
+  font-size:1.3rem;
+  font-weight: bold; 
+
 }

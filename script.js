@@ -7,6 +7,16 @@ menu.addEventListener('click',function() {
     menuLinks.classList.toggle('active');
 });
 
+// const cart=document.querySelector('#toggle-cart-btn');
+// const shoping=document.querySelector('#shopping-cart');
+// cart.addEventListener('click',function(){
+//     cart.classList.toggle('cart-active');
+//     cart.classList.toggle('active');
+
+//     shoping.classList.toggle('shop-active');
+//     shoping.classList.toggle('active');
+// })
+
 // Initialize Swiper
 const swiper = new Swiper('.swiper', {
     autoplay:{
@@ -65,3 +75,5 @@ gsap.from('.animate-top-box',{
     opacity:2, 
     y:50
 });
+ 
+ 

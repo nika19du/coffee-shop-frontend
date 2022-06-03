@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coffee Shop</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png"  href="images/coffee-logo.png"  >
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.2/font/bootstrap-icons.min.css"> 
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>  
+    <script src="https://kit.fontawesome.com/2c17b0523e.js" crossorigin="anonymous"></script>
+   </head>
+  <body>
+    <h1 class="heading">your <span>ORDER</span></h1>
+    <main> 
+    <section class="orderInfo">
+      <p id="dataInfo"> 
+      </p> 
+    </section>
+    <section>
+      <form action="https://formsubmit.co/qnkovanikol29@gmail.com" method="POST" class="orderForm">
+        <input class="name" type="text" name="clientName" placeholder="Name..." required>
+        <input class="email" type="email" name="clientEmail" placeholder="Email..."required>
+        <input class="number" type="number" name="clientPhone" placeholder="Phone..."required>
+        <input class="address" type="address" name="clientAddres" placeholder="Address..."required>
+          <select name="paymentMethod" id="payment">
+            <optgroup label="Payment method">
+              <option value="card">Card</option>
+              <option value="cash">Cash</option>
+            </optgroup>
+        <textarea class="msg" name="clientComment" id="" cols="5" rows="5" placeholder="Comment to order"></textarea>
+        <button type="submit "onclick="Congrats()">Send</button>
+      </form>
+    </section>
+  </main>
+    <script>  
+        const form=document.querySelector('.orderForm');
+       // let res=JSON.parse(localStorage.getItem("items"));
+        let info=document.getElementById('dataInfo');
+        var totalPrice=0;
+     //   console.log(res);
+        //  res.map(data=>{
+        //     info.innerHTML+=`<strong><i>Order number: <i></strong> ${data.no} <br/> <strong><i>Product:</i></strong> `+data.name+' '+`<span>$${data.price}</span><br/>`; 
+        //     totalPrice+=data.price;
+        // });
+        let res=JSON.parse(localStorage.getItem('items')).map(data=>{
+          info.innerHTML+=`<strong><i>Order number: <i></strong> ${data.id} <br/> <strong><i>Product:</i></strong> `+data.name+' '+`<span>$${data.price}</span><br/>`; 
+          totalPrice+=parseInt(data.price);
+      });
+        const name=document.querySelector('.name'),
+              email=document.querySelector('.email'),
+              number=document.querySelector('.number'),
+              address=document.querySelector('.address'),
+              payment=document.getElementById('payment').value,
+              msg=document.querySelector('.msg');
+             
+              function Congrats(){
+                alert(`Congrats for ordering ${name.value}! With total price $${totalPrice}. Order Detail: payment-${payment} address-${address.value}`);
+                localStorage.clear();
+              }
+ 
+    </script> 
+    </script>
+  </body>
+</html>
