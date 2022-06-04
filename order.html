@@ -22,7 +22,7 @@
       <form action="https://formsubmit.co/qnkovanikol29@gmail.com" method="POST" class="orderForm">
         <input class="name" type="text" name="clientName" placeholder="Name..." required>
         <input class="email" type="email" name="clientEmail" placeholder="Email..."required>
-        <input class="number" type="number" name="clientPhone" placeholder="Phone..."required>
+        <input class="number" type="number" name="clientPhone" placeholder="Phone..."required pattern="[789][0-9]{9}">
         <input class="address" type="address" name="clientAddres" placeholder="Address..."required>
           <select name="paymentMethod" id="payment">
             <optgroup label="Payment method">
@@ -45,7 +45,7 @@
         //     totalPrice+=data.price;
         // });
         let res=JSON.parse(localStorage.getItem('items')).map(data=>{
-          info.innerHTML+=`<strong><i>Order number: <i></strong> ${data.id} <br/> <strong><i>Product:</i></strong> `+data.name+' '+`<span>$${data.price}</span><br/>`; 
+          info.innerHTML+=`<strong><i>Order number: <i></strong> ${data.id} <br/> <strong><i>Product:</i></strong> `+data.name+` | quantity: ${data.no} for `+`<span>$${data.price}</span><br/>`; 
           totalPrice+=parseInt(data.price);
       });
         const name=document.querySelector('.name'),
@@ -56,7 +56,9 @@
               msg=document.querySelector('.msg');
              
               function Congrats(){
-                alert(`Congrats for ordering ${name.value}! With total price $${totalPrice}. Order Detail: payment-${payment} address-${address.value}`);
+                const time = Date.now(); 
+                const today = new Date(time);
+                alert(`Congrats for ordering ${name.value}! With total price $${totalPrice}.\nOrder Detail: *payment-${payment} *address-${address.value}\n${today}`);
                 localStorage.clear();
               }
  

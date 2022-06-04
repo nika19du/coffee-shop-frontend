@@ -3,9 +3,9 @@ window.onload=function(){
   const iconShopping= document.querySelector('.iconShopping');
   const cartCloseBtn=document.querySelector('.fa-close');
   const cartBox= document.querySelector('.cartBox');
-
+  
   iconShopping.addEventListener('click',function(){
-    cartBox.classList.add('active');
+    cartBox.classList.add('active'); 
   });
   cartCloseBtn.addEventListener('click',function(){
     cartBox.classList.remove('active');
@@ -24,6 +24,7 @@ window.onload=function(){
         let item={
           id:i+1,
           name:e.target.parentElement.children[1].textContent,
+          cost:e.target.parentElement.children[2].children[0].textContent,
           price:e.target.parentElement.children[2].children[0].textContent,
           no:1
         };
@@ -36,7 +37,7 @@ window.onload=function(){
           localItems.map((data)=>{
             if(item.id==data.id){
               item.no=data.no+1;
-              let p=parseInt(data.price);
+              let p=parseFloat(data.cost).toFixed(2);
               item.price=p*item.no;
             }else{
               items.push(data);
@@ -51,6 +52,13 @@ window.onload=function(){
       }
     });
   }
+
+  var c=document.querySelector('#checkoutBtn');
+ console.log(c);
+  if(items.length==0)
+  {  
+     c.style.display="none";
+  }
   // adding data to shopping cart
   const iconShoppingP= document.querySelector('.iconShopping p');
   let no=0;
@@ -63,10 +71,12 @@ window.onload=function(){
   let tableData='';
   tableData+='<tr><th>S no.</th><th>Item Name</th><th>Item No</th><th>Item Price</th><th></th></tr>';
     if(JSON.parse(localStorage.getItem("items"))[0]===null){
-        tableData+='<tr><td colspan="5">No items found</td></tr>'
+        tableData+='<tr><td colspan="5">No items found</td></tr>';
+        
     }else{
         JSON.parse(localStorage.getItem("items")).map(data=>{
             tableData+='<tr><th>'+data.id+'</th><th>'+data.name+'</th><th>'+data.no+'</th><th>'+data.price+'</th><th>'+'<a href="#" onclick=Delete(this);>Delete</a></th></tr>';
+            c.style.display="block";
         }); 
     }
     cardBoxTable.innerHTML=tableData;
